@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 var startTime = Date.now();
 export default function Timer(props) {
-  const { start, increaseTime } = props;
+  const { start } = props;
   const [timeInSeconds, setTimeInSeconds] = useState(0);
-
-  const [timeElapased, setTimeElapsed] = useState("");
 
   useEffect(() => {
     let interval = null;
@@ -13,9 +11,6 @@ export default function Timer(props) {
         var elapsedTime;
         elapsedTime = Date.now() - startTime + 5000;
         setTimeInSeconds(elapsedTime);
-        // increaseTime
-        //   ? setTimeInSeconds(elapsedTime + 5000)
-        //   : setTimeInSeconds(elapsedTime);
       }, 100);
     } else if (!start && timeInSeconds !== 0) {
       clearInterval(interval);

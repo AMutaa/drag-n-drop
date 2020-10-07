@@ -35,7 +35,6 @@ export default class MainPage extends Component {
     this.setState({ start: true });
     const dt = e.dataTransfer;
     dt.setData("text/plain", position);
-    console.log("position ----->", position);
     dt.effectAllowed = "move";
   };
 
@@ -44,16 +43,13 @@ export default class MainPage extends Component {
   };
 
   handleDrop = (e, index, dropTarget) => {
-    console.log(index);
     e.preventDefault();
-    console.log(this.state);
+
     let dropTargetContainer = this.state[dropTarget];
 
     if (dropTargetContainer[index]) return;
-    console.log("target[index] ---->", dropTargetContainer[index]);
 
     const piecePosition = e.dataTransfer.getData("text");
-    console.log("piece position ---->", piecePosition);
 
     if (parseInt(piecePosition) !== index) {
       this.setState({
@@ -85,17 +81,12 @@ export default class MainPage extends Component {
   };
 
   handleClick = (e) => {
-    console.log(this.state);
-    this.setState(
-      {
-        start: true,
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      start: true,
+    });
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="container">
         <div className="item" id="timer">
